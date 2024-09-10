@@ -22,7 +22,7 @@ app.get('/user-info/:id',(req,res)=>{
     if(isNaN(req.params.id)){
         res.status(400).send('Invalid request');
     }
-    if(parseInt(req.params.id)>data.length){
+    if(parseInt(req.params.id)>data.length || parseInt(req.params.id)<1){
         res.status(404).send('User not found');
     }
     const user = data[parseInt(req.params.id)-1];
