@@ -7,14 +7,21 @@ let data = [
         "email":"tomasbagu@unisabana.edu.co",
         "id":"0000299043"
 
-    }
+    },
+    {
+        "name":"Rafael",
+        "lastName" :"Salcedo",
+        "email":"rafaelsava@unisabana.edu.co",
+        "id":"0000299495"}
 ];
 app.listen(3000);
-console.log(server on port${3000});
+console.log(`server on port${3000}`);
 app.use(express.json());
-app.get('/users/:id',(req,res)=>{
+app.get('/user-info/:id',(req,res)=>{
     // add a condition to check if req.params.id is not a number
-    
+    if(isNaN(req.params.id)){
+        res.status(400).send('Invalid request');
+    }
     if(parseInt(req.params.id)>data.length){
         res.status(404).send('User not found');
     }
