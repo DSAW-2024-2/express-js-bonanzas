@@ -18,10 +18,10 @@ app.use(express.json());
 app.get('/user-info/:id',(req,res)=>{
     // add a condition to check if req.params.id is not a number
     if(isNaN(req.params.id)){
-        res.status(400).send('Invalid request');
+        res.status(400).json({"message":'Invalid request'});
     }
     if(parseInt(req.params.id)>data.length || parseInt(req.params.id)<1){
-        res.status(404).send('User not found');
+        res.status(404).json({"message":'User not found'});
     }
     const user = data[parseInt(req.params.id)-1];
     res.json(user);
