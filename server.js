@@ -15,6 +15,9 @@ let data = [
         "id":"0000299495"}
 ];
 app.use(express.json());
+app.get('/',(req,res)=>{
+    res.json({"message":"Endpoint working"});
+})
 app.get('/user-info/:id',(req,res)=>{
     // add a condition to check if req.params.id is not a number
     const user = data[parseInt(req.params.id)-1];
@@ -28,4 +31,3 @@ app.get('/user-info/:id',(req,res)=>{
     res.json(user);
 })
 
-module.exports = app;
